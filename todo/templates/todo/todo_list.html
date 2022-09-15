@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Things I need to do</h1>
+    <table>
+        {% for item in items %}
+        <tr>
+            {%if item.done == True%}
+            <td><del>{{item.name}}</del></td>
+            {%else%}
+            <td>{{item.name}}</td>
+            {%endif%}
+            <td>
+                <a href="/edit/{{item.id}}">
+                    <button>Edit todo </button>
+                </a>
+            </td>
+            <td>
+                <a href="/toggle/{{item.id}}">
+                    <button>Toggle todo </button>
+                </a>
+            </td>
+            <td>
+                <a href="/delete/{{item.id}}">
+                    <button>Delete todo </button>
+                </a>
+            </td>
+        </tr>
+        {%empty%}
+        <td>
+            <tr>You have nothing to do</tr>
+        </td>
+        {%endfor%}
+    
+</table>
+<a href="/add">Add new item</a>
+</body>
+</html>
